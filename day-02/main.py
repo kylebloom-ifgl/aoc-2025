@@ -22,12 +22,11 @@ def range_from(s):
 def is_repeat(i):
     s = str(i)
     mid = len(s) // 2
-    return s[0:mid] == s[mid:]
+    return s[:mid] == s[mid:]
 
 
 def is_silly(i):
     s = str(i)
-
     return any(
         all(a == b for a, b in window(chunk(s, pos)))
         for pos in range(1, (len(s) // 2) + 1)
