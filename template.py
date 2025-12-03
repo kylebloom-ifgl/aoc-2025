@@ -2,7 +2,7 @@ from argparse import ArgumentParser
 from pathlib import Path
 
 
-def parse(str_data):
+def parse(str_data: str):
     pass
 
 
