@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Example Part 1",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${fileDirname}",
+      "args": [".\\example.txt", "-p", "part1"]
+    },
+    {
+      "name": "Example Part 2",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${fileDirname}",
+      "args": [".\\example.txt", "-p", "part2"]
+    },
+    {
+      "name": "Input Part 1",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${fileDirname}",
+      "args": [".\\example.txt", "-p", "part1"]
+    },
+    {
+      "name": "Input Part 2",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${fileDirname}",
+      "args": [".\\example.txt", "-p", "part2"]
+    }
+  ]
+}
