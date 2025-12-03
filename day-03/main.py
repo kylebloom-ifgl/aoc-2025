@@ -1,49 +1,28 @@
 from argparse import ArgumentParser
 from pathlib import Path
-from functools import lru_cache
 
 
-def list_to_tuple(function):
-    def wrapper(*args):
-        args = [tuple(x) if isinstance(x, list) else x for x in args]
-        result = function(*args)
-        result = tuple(result) if isinstance(result, list) else result
-        return result
-
-    return wrapper
-
-
-@list_to_tuple
-@lru_cache
-def biggest_n(ln: tuple[int], n: int):
-    if len(ln) == 0:
-        return None
-    if n == 1:
-        return max(ln)
-
-    ignore = 0
-    while ignore < len(ln):
-        skip = len(ln) - ignore
+def biggest_n(ln: list[str], n: int):
+    acc = ""
+    for r in range(n - 1, -1, -1):
+        skip = len(ln) - r
         (i, biggest) = max(enumerate(ln[:skip]), key=lambda v: v[1])
+        acc += biggest
         i += 1
-        sub = biggest_n(ln[i:], n - 1)
-        if sub is None:
-            ignore += 1
-        else:
-            return int(f"{biggest}{sub}")
-    return None
+        ln = ln[i:]
+    return acc
 
 
 def parse(str_data: str):
-    return [list(map(int, line)) for line in str_data.split()]
+    return str_data.split()
 
 
 def part1(data):
-    print(sum(biggest_n(ln, 2) for ln in data))
+    print(sum(int(biggest_n(ln, 2)) for ln in data))
 
 
 def part2(data):
-    print(sum(biggest_n(ln, 12) for ln in data))
+    print(sum(int(biggest_n(ln, 12)) for ln in data))
 
 
 def main():
