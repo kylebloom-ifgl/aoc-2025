@@ -33,12 +33,12 @@ def part1(data):
     count = 0
 
     for direction, distance in data:
-        if direction == "R":
+        if direction == 'R':
             safe.right(distance)
-        elif direction == "L":
+        elif direction == 'L':
             safe.left(distance)
         else:
-            raise ValueError("Invalid direction")
+            raise ValueError('Invalid direction')
 
         count += 1 if safe.dial == 0 else 0
 
@@ -50,12 +50,12 @@ def part2(data):
     count = 0
 
     for direction, distance in data:
-        if direction == "R":
+        if direction == 'R':
             count += safe.right(distance)
-        elif direction == "L":
+        elif direction == 'L':
             count += safe.left(distance)
         else:
-            raise ValueError("Invalid direction")
+            raise ValueError('Invalid direction')
 
     print(count)
 
@@ -63,28 +63,28 @@ def part2(data):
 def main():
     parser = ArgumentParser()
     parser.add_argument(
-        "input",
-        default=Path("./input.txt"),
+        'input',
+        default=Path('./input.txt'),
         type=Path,
-        nargs="?",
-        help="Path to the input file",
+        nargs='?',
+        help='Path to the input file',
     )
     parser.add_argument(
-        "-p", "--part", default="both", choices=["both", "part1", "part2"]
+        '-p', '--part', default='both', choices=['both', 'part1', 'part2']
     )
     args = parser.parse_args()
 
-    with open(args.input, "r") as input_file:
+    with open(args.input, 'r') as input_file:
         file_data = input_file.read()
 
     data = parse(file_data)
 
-    if args.part in ["both", "part1"]:
+    if args.part in ['both', 'part1']:
         part1(data)
 
-    if args.part in ["both", "part2"]:
+    if args.part in ['both', 'part2']:
         part2(data)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

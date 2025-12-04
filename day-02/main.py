@@ -15,7 +15,7 @@ def chunk(s, width):
 
 
 def range_from(s):
-    start, end = map(int, s.split("-"))
+    start, end = map(int, s.split('-'))
     return range(start, end + 1)
 
 
@@ -34,7 +34,7 @@ def is_silly(i):
 
 
 def parse(str_data):
-    return [range_from(s) for s in str_data.split(",")]
+    return [range_from(s) for s in str_data.split(',')]
 
 
 def part1(data):
@@ -50,28 +50,28 @@ def part2(data):
 def main():
     parser = ArgumentParser()
     parser.add_argument(
-        "input",
-        default=Path("./input.txt"),
+        'input',
+        default=Path('./input.txt'),
         type=Path,
-        nargs="?",
-        help="Path to the input file",
+        nargs='?',
+        help='Path to the input file',
     )
     parser.add_argument(
-        "-p", "--part", default="both", choices=["both", "part1", "part2"]
+        '-p', '--part', default='both', choices=['both', 'part1', 'part2']
     )
     args = parser.parse_args()
 
-    with open(args.input, "r") as input_file:
+    with open(args.input, 'r') as input_file:
         file_data = input_file.read()
 
     data = parse(file_data)
 
-    if args.part in ["both", "part1"]:
+    if args.part in ['both', 'part1']:
         part1(data)
 
-    if args.part in ["both", "part2"]:
+    if args.part in ['both', 'part2']:
         part2(data)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
