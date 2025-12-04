@@ -6,11 +6,9 @@ from pathlib import Path
 
 def neighbors_count(nh: list[str], row: int, col: int):
     rows, cols = len(nh), len(nh[0])
-    up, down = row - 1, row + 1
-    left, right = col - 1, col + 1
 
-    rs = (r for r in (up, row, down) if 0 <= r and r < rows)
-    cs = (c for c in (left, col, right) if 0 <= c and c < cols)
+    rs = (r for r in (row - 1, row, row + 1) if r in range(0, rows))
+    cs = (c for c in (col - 1, col, col + 1) if c in range(0, cols))
 
     return sum(
         1
