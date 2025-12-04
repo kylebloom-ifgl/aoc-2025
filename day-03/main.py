@@ -8,8 +8,7 @@ def biggest_n(ln: list[str], n: int):
         skip = len(ln) - r
         (i, biggest) = max(enumerate(ln[:skip]), key=lambda v: v[1])
         acc += biggest
-        i += 1
-        ln = ln[i:]
+        ln = ln[i + 1 :]
     return acc
 
 
